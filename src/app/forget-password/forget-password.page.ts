@@ -1,25 +1,29 @@
+import { AuthServiceService } from './../service/auth-service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from 'src/environments/environment';
 
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.page.html',
   styleUrls: ['./forget-password.page.scss'],
 })
+
 export class ForgetPasswordPage implements OnInit {
 
   email: string;
+  service: AuthServiceService;
 
-  constructor(private route: Router) { }
+  constructor(private router: Router) {
+    this.service = new AuthServiceService(router);
+  }
 
   ngOnInit() {
   }
 
   forgetPassword(): void{
-    sendPasswordResetEmail(auth,this.email);
-    this.route.navigate(['/home']);
+    this.service.forgetPasswordService(this.email);
+    // sendPasswordResetEmail(auth,this.email);
+    // this.route.navigate(['/home']);
   }
 
 }
