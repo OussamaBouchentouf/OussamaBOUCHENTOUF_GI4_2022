@@ -1,40 +1,67 @@
-
-
-<!-- <ion-content>
-  <ion-item>
-    <ion-label position="floating">Email</ion-label>
-    <ion-input type="email" [(ngModel)]="user.email" required="true"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Password</ion-label>
-    <ion-input type="password" [(ngModel)]="user.password" required="true" ></ion-input>
-  </ion-item>
-  <ion-button class="button" color="tertiary" (click)="loginUser()">Login</ion-button>
-  <ion-button class="button" color="tertiary" (click)="signUp()">Signup</ion-button>
-</ion-content> -->
-
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Log In</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+		  <ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>LOGIN</ion-title>
+	  </ion-toolbar>
 </ion-header>
-<ion-content>
-    <ion-item lines="full" style="margin-top: 30%;">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" [(ngModel)]="user.email" required="true"></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" [(ngModel)]="user.password" required="true" ></ion-input>
-    </ion-item>
-    <ion-row>
-      <ion-col>
-        <ion-button  color="danger" (click)="loginUser()" expand="block">Sign In</ion-button>
-        <ion-button  (click)="forgetPassword()" expand="block">Forget-Password</ion-button>
-        <!-- <a (href) = resetLink() class="small-text">Forgot Password?</a> -->
-      </ion-col>
-    </ion-row>
-</ion-content>
+  
+  
+  <ion-content>
+	<div class="login-wrap">
+	  <div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<div class="login-form">
+		  <div class="sign-in-htm">
+			<div class="group">
+			  <ion-label class="label">Email</ion-label>
+				<ion-input class="input" type="email" [(ngModel)]="user.email" required="true" ></ion-input>
+			</div>
+			<div class="group">
+				<ion-label class="label">Password</ion-label>
+				<ion-input class="input" type="password" [(ngModel)]="user.password" required="true" ></ion-input>
+			</div>
+				<ion-button style="background-color: #00b4ff; margin-top: 20px;" expand="block" (click)="loginUser()">Login</ion-button>
+			<div class="hr"></div>
+			<div class="foot-lnk">
+			  <a [routerLink]="['/forget-password']"><p style="color: red; font-size: large; font-weight: bold;">Forget Password ? </p></a>
+			</div>
+		  </div>
+		  <div class="sign-up-htm">
+			<div class="group">
+				<ion-label class="label">FullName</ion-label>
+				<ion-input class="input" type="text" [(ngModel)]="userForSignUp.fullname" required="true" ></ion-input>
+			</div>
+			<div class="group">
+				<ion-label class="label">Email</ion-label>
+				<ion-input class="input" type="email" [(ngModel)]="userForSignUp.email" required="true" ></ion-input>
+			</div>
+			<div class="group">
+				<ion-label class="label">Phone</ion-label>
+				<ion-input class="input" inputmode="tel" [(ngModel)]="userForSignUp.phoneNumber" required="true" ></ion-input>
+			</div>
+			<div class="group">
+				<ion-label class="label">Password</ion-label>
+				<ion-input class="input" type="password" [(ngModel)]="password" required="true" ></ion-input>
+			</div>
+			<div class="group">
+				<ion-label class="label">Confirm password</ion-label>
+				<ion-input class="input" type="password" [(ngModel)]="confirmPassword" required="true" ></ion-input>
+			</div>
+			<ion-row style="margin: 10px;">
+				<ion-col size="auto">
+				  <ion-checkbox checked="checked" [(ngModel)]="checked"></ion-checkbox>
+				</ion-col>
+				<ion-col>
+				  <ion-label>I agree to the terms and conditions</ion-label>
+				</ion-col>
+			  </ion-row>
+				<ion-button style="background-color: #00b4ff; margin-top: 30px;" expand="block" disabled={{!checked}} (click)="signUp()">Signup</ion-button>
+		  </div>
+		</div>
+	  </div>
+</div>
+  
+  </ion-content>

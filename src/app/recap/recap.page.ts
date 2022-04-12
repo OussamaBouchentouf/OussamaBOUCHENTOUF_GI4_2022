@@ -1,5 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { auth, db } from '../../environments/environment';
+import { collection, getDocs } from 'firebase/firestore';
 
 @Component({
   selector: 'app-recap',
@@ -8,16 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecapPage implements OnInit {
 
-  recapData : any
+  recapData: any;
+  userData: any;
+  display: boolean;
 
-  constructor(private route : ActivatedRoute, private router : Router) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() {
-    this.recapData = this.route.snapshot.params  
+  async ngOnInit() {
+    this.recapData = this.route.snapshot.params;
+    const querySnapshot = await getDocs(collection(db, this.recapData.userId));
+    const data = [];
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      data.push(doc.data());
+    });
+    this.userData = data;
   }
 
-  homePage() : void {
-    this.router.navigate(['/home'])
+  homePage(): void {
+    this.router.navigate(['/home']);
+  }
+
+  changeState(): void{
+    this.display = true;
   }
 
 }

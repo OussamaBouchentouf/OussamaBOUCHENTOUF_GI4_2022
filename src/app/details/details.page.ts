@@ -19,7 +19,7 @@ export class DetailsPage implements OnInit {
   }
 
   getStarted(){
-    this.router.navigate(['/home-page-login-and-register'],
+    this.router.navigate(['/login'],
     {queryParams: {course: this.clickedTraining.name, price: this.clickedTraining.price}});
   }
 

@@ -1,10 +1,53 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>Details</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> 
+<ion-content>
+  <div class="container d-flex justify-content-center">
+  <div class="card p-4" style="flex: 100%;  margin-left: 5%; margin-right: 5%;margin-top: 5%; border-radius: 20px">
+      <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img [src]="clickedTraining.imgUrl" width="250px"></button> <p class="name mt-3">{{clickedTraining.name}}</p> <p>ID : {{clickedTraining.id}}</p>
+          <div class="d-flex flex-row justify-content-center align-items-center gap-2"> </div>
+          <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number"><span class="follow">Price : </span>{{clickedTraining.price}} $  </span> </div>
+          <div class=" d-flex mt-2"> <ion-button color="primary" (click)="getStarted()">Get Started</ion-button> </div>
+          <div class="text mt-3"> 
+            <ion-grid class="ion-justify-content-center">
+              
+              <ion-row>
+                <ion-col>
+                  <p style="text-align: center; font-weight: 600">{{clickedTraining.description}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="3" >
+                  <p style="font-weight: bold;">Period :</p>
+                </ion-col>
+                <ion-col>
+                  <p>{{clickedTraining.period}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="5">
+                  <p style="font-weight: bold;">Prerequisite : </p>
+                </ion-col>
+                <ion-col>
+                  <p>{{clickedTraining.prerequisite}}</p>
+                </ion-col>
+              </ion-row>
+        </ion-grid>  
+          </div>
+          <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> </div>
+          <div class=" px-2 rounded mt-4 date "> <span class="join">Created by Bouchentouf Oussama</span> </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
 
-<ion-content >
+
+<!-- <ion-content >
     <ion-grid class="ion-justify-content-center">
         <ion-row>
           <ion-col size="3">
@@ -64,5 +107,5 @@
     <ion-row class="ion-justify-content-center">
     <ion-button color="primary" (click)="getStarted()">Get Started</ion-button>
   </ion-row>
-</ion-footer>
+</ion-footer> -->
 

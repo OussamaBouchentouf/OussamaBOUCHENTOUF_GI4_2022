@@ -17,9 +17,16 @@ export class AuthServiceService {
     .then((usr)=>{
       getDoc(doc(db, 'users', usr.user.uid))
       // eslint-disable-next-line @typescript-eslint/no-shadow
-      .then((doc) => {
-        const userData = doc.data();
-        data = {...data, fullName: userData.FullName};
+      .then((docc) => {
+        const userData = docc.data();
+
+        setDoc(doc(db, usr.user.uid, usr.user.uid+data.course), {
+          course : data.course,
+          price : data.price
+        }).then(() => {})
+        .catch(() => console.log('Failed to create doc'));
+
+        data = {...data, fullName: userData.FullName,userId : userData.Id};
         this.router.navigate(['/recap',data]);
       });
     }).catch(()=>{alert('Email or password is incorrect');});
@@ -33,13 +40,19 @@ export class AuthServiceService {
         setDoc(doc(db, 'users', usr.user.uid), {
           FullName: user.fullname,
           Email: user.email,
-          Phone: user.phoneNumber
+          Phone: user.phoneNumber,
+          Id : usr.user.uid,
         }).then(() => {
-          data = {...data, fullName: user.fullname};
+          setDoc(doc(db, usr.user.uid, usr.user.uid+data.course), {
+          course : data.course,
+          price : data.price
+        }).then(() => {})
+        .catch(() => console.log('Failed to create doc'));
+          data = {...data, fullName: user.fullname,userId : usr.user.uid  };
           this.router.navigate(['/recap',data]);})
         .catch(() => console.log('Failed to create doc'));
       })
-      .catch(() => console.log('Signup failed')
+      .catch(() => alert('Signup failed')
       );
     } else {
       alert('Password dont match confirm password');

@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
   },
   {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
     path: 'recap',
     loadChildren: () => import('./recap/recap.module').then( m => m.RecapPageModule)
   },
@@ -31,12 +27,6 @@ const routes: Routes = [
     path: 'forget-password',
     loadChildren: () => import('./forget-password/forget-password.module').then( m => m.ForgetPasswordPageModule)
   },
-  {
-    path: 'home-page-login-and-register',
-    loadChildren: () =>
-    import('./home-page-login-and-register/home-page-login-and-register.module').then( m => m.HomePageLoginAndRegisterPageModule)
-  },
-
 ];
 
 @NgModule({
