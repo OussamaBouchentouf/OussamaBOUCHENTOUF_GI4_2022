@@ -7,16 +7,22 @@
 <ion-content>
   <p style="margin: 30px;">Welcome {{recapData.fullName}}, you have successfully purchase {{recapData.course}} for {{recapData.price}}$</p>
   <ion-button style="margin-left: 40%; margin-right: 40%;" (click)="homePage()" >Home</ion-button>
-  <p class="font-hubballi" style="margin-top: 60px;">If you want to display your training : <br></p>
-  <ion-button  (click)="changeState()" >display my training </ion-button>
+  <div style="margin: 30px;">
+    <p class="font-hubballi" style="margin-top: 60px;">If you want to display your training : <br></p>
+    <ion-button  (click)="changeState()" >display my training </ion-button>
+  </div>
 
 
   <div [hidden]="!display" style="margin-top: 50px;">
     <p class="display-1 text-center font-sansita">Your training : </p>
+    <div class="container d-flex justify-content-center">
+    <div class="card px-2">
     <ion-row class="container" *ngFor="let training of userData">
       <ion-col >
-        <p style="font-family: 'Smooch Sans', sans-serif; font-size: large;" class="">{{training.course}} - {{training.price}}</p>
+        <p style="font-family: 'Smooch Sans', sans-serif; font-size: x-large; color: black;" class="">{{training.course}} --> {{training.price}}$</p>
       </ion-col>
     </ion-row>
   </div>
+  </div>
+</div>
 </ion-content>
